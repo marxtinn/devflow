@@ -28,9 +28,8 @@
   "files.exclude": {
     "**/.vscode": true,
     "**/.next": true,
-    // "**/.git": false,
     "**/node_modules": true,
     "next-env.d.ts": true
-    // "**/components.json": true
-  }
+  },
+  "editor.accessibilityPageSize": 200
 }
