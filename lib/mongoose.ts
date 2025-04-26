@@ -1,4 +1,5 @@
 import logger from "@/lib/logger";
+import "@/database";
 import mongoose, { mongo, Mongoose } from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI as string;

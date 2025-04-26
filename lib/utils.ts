@@ -14,19 +14,27 @@ export const getDeviconClassName = (techName: string) => {
     : "devicon-devicon-plain";
 };
 
-export const getTimeStamp = (date: Date): string => {
+export const getTimeStamp = (createdAt: Date): string => {
+  const date = new Date(createdAt);
   const now = new Date();
-  const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  if (seconds < 60) return `${seconds} second${seconds !== 1 ? "s" : ""} ago`;
+  const secondsAgo = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes} minute${minutes !== 1 ? "s" : ""} ago`;
+  const units = [
+    { label: "year", seconds: 31536000 },
+    { label: "month", seconds: 2592000 },
+    { label: "week", seconds: 604800 },
+    { label: "day", seconds: 86400 },
+    { label: "hour", seconds: 3600 },
+    { label: "minute", seconds: 60 },
+    { label: "second", seconds: 1 },
+  ];
 
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours} hour${hours !== 1 ? "s" : ""} ago`;
-
-  const days = Math.floor(hours / 24);
-  if (days === 1) return `yesterday`;
-  return `${days} day${days !== 1 ? "s" : ""} ago`;
+  for (const unit of units) {
+    const interval = Math.floor(secondsAgo / unit.seconds);
+    if (interval >= 1) {
+      return `${interval} ${unit.label}${interval > 1 ? "s" : ""} ago`;
+    }
+  }
+  return "just now";
 };
