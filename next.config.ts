@@ -22,6 +22,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    after: true,
+  },
 };
 
 export default nextConfig;
