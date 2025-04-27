@@ -1,64 +1,64 @@
 "use client";
 
-import type { ForwardedRef } from "react";
 import {
+  MDXEditor,
+  UndoRedo,
   BoldItalicUnderlineToggles,
-  ChangeCodeMirrorLanguage,
-  codeBlockPlugin,
-  codeMirrorPlugin,
-  ConditionalContents,
-  CreateLink,
-  diffSourcePlugin,
-  headingsPlugin,
-  imagePlugin,
+  toolbarPlugin,
+  CodeToggle,
   InsertCodeBlock,
+  codeBlockPlugin,
+  headingsPlugin,
+  listsPlugin,
+  linkPlugin,
+  quotePlugin,
+  markdownShortcutPlugin,
+  ListsToggle,
+  linkDialogPlugin,
+  CreateLink,
   InsertImage,
   InsertTable,
-  InsertThematicBreak,
-  linkDialogPlugin,
-  linkPlugin,
-  listsPlugin,
-  ListsToggle,
-  markdownShortcutPlugin,
-  MDXEditor,
-  quotePlugin,
   tablePlugin,
-  thematicBreakPlugin,
-  toolbarPlugin,
-  UndoRedo,
-  type MDXEditorMethods,
+  imagePlugin,
+  codeMirrorPlugin,
+  ConditionalContents,
+  ChangeCodeMirrorLanguage,
+  Separator,
+  InsertThematicBreak,
+  diffSourcePlugin,
+  MDXEditorMethods,
 } from "@mdxeditor/editor";
 import { basicDark } from "cm6-theme-basic-dark";
 import { useTheme } from "next-themes";
+import { Ref } from "react";
+
 import "@mdxeditor/editor/style.css";
 import "./dark-editor.css";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 
 interface Props {
   value: string;
+  editorRef: Ref<MDXEditorMethods> | null;
   fieldChange: (value: string) => void;
-  editorRef: ForwardedRef<MDXEditorMethods> | null;
 }
 
-const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
+const Editor = ({ value, editorRef, fieldChange }: Props) => {
   const { resolvedTheme } = useTheme();
 
-  const theme = resolvedTheme === "dark" ? [basicDark] : [];
+  const themeExtension = resolvedTheme === "dark" ? [basicDark] : [];
+
   return (
     <MDXEditor
       key={resolvedTheme}
       markdown={value}
       ref={editorRef}
-      className="background-light800_dark200 light-border-2 markdown-editor dark-editor w-full border grid"
       onChange={fieldChange}
+      className="background-light800_dark200 light-border-2 markdown-editor dark-editor grid w-full border"
       plugins={[
         headingsPlugin(),
         listsPlugin(),
         linkPlugin(),
         linkDialogPlugin(),
         quotePlugin(),
-        thematicBreakPlugin(),
-        markdownShortcutPlugin(),
         tablePlugin(),
         imagePlugin(),
         codeBlockPlugin({ defaultCodeBlockLanguage: "" }),
@@ -68,7 +68,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
             txt: "txt",
             sql: "sql",
             html: "html",
-            saas: "saas",
+            sass: "sass",
             scss: "scss",
             bash: "bash",
             json: "json",
@@ -79,7 +79,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
             jsx: "JavaScript (React)",
           },
           autoLoadLanguageSupport: true,
-          codeMirrorExtensions: theme,
+          codeMirrorExtensions: themeExtension,
         }),
         diffSourcePlugin({ viewMode: "rich-text", diffMarkdown: "" }),
         toolbarPlugin({
@@ -97,6 +97,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
                       <Separator />
 
                       <BoldItalicUnderlineToggles />
+                      <CodeToggle />
                       <Separator />
 
                       <ListsToggle />
@@ -108,6 +109,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
 
                       <InsertTable />
                       <InsertThematicBreak />
+                      <Separator />
 
                       <InsertCodeBlock />
                     </>
@@ -117,8 +119,8 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
             />
           ),
         }),
+        markdownShortcutPlugin(),
       ]}
-      {...props}
     />
   );
 };
