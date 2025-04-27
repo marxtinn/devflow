@@ -10,6 +10,7 @@ import Preview from "@/components/editor/Preview";
 import React from "react";
 import { unstable_after as after } from "next/server";
 import AnswerForm from "@/components/forms/AnswerForm";
+import { getAnswers } from "@/lib/actions/answer.action";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
   const { id } = await params;
@@ -22,6 +23,19 @@ const QuestionDetails = async ({ params }: RouteParams) => {
   });
 
   if (!success || !question) return redirect("/404");
+
+  const {
+    success: areAnswersLoaded,
+    data: answersResult,
+    error: answersError,
+  } = await getAnswers({
+    questionId: id,
+    page: 1,
+    pageSize: 10,
+    filter: "latest",
+  });
+
+  console.log("Answers", answersResult);
 
   const { author, createdAt, answers, views, tags, content, title } = question;
 
