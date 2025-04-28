@@ -96,7 +96,7 @@ export async function getAnswers(params: GetAnswersParams): Promise<
       sortCriteria = { createdAt: 1 };
       break;
     case "popular":
-      sortCriteria = { createdAt: -1 };
+      sortCriteria = { upvotes: -1 };
       break;
     default:
       sortCriteria = { createdAt: -1 };
