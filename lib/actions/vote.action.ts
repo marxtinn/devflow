@@ -1,7 +1,10 @@
 "use server";
 
 import mongoose, { ClientSession } from "mongoose";
+import { revalidatePath } from "next/cache";
 
+import ROUTES from "@/constants/routes";
+import { Answer, Question, Vote } from "@/database";
 import action from "@/lib/handlers/action";
 import handleError from "@/lib/handlers/error";
 import {
@@ -9,9 +12,6 @@ import {
   hasVotedSchema,
   UpdateVoteCountSchema,
 } from "@/lib/validations";
-import { Answer, Question, Vote } from "@/database";
-import { revalidatePath } from "next/cache";
-import ROUTES from "@/constants/routes";
 
 export async function updateVoteCount(
   params: UpdateVoteCountParams,

@@ -35,7 +35,7 @@ type ActionResponse<T = null> = {
 type SuccessResponse<T = null> = ActionResponse<T> & { success: true };
 type ErrorResponse = ActionResponse<undefined> & { success: false };
 
-type APIErrorResponse<T = null> = NextResponse<ErrorResponse>;
+type APIErrorResponse = NextResponse<ErrorResponse>;
 type APIResponse<T = null> = NextResponse<SuccessResponse<T> | ErrorResponse>;
 
 interface RouteParams {

@@ -1,19 +1,20 @@
-import Metric from "@/components/Metric";
-import UserAvatar from "@/components/UserAvatar";
-import ROUTES from "@/constants/routes";
-import { getQuestion, incrementViews } from "@/lib/actions/question.action";
-import { formatNumber, getTimeStamp } from "@/lib/utils";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
+import React, { Suspense } from "react";
+
+import AllAnswers from "@/components/answers/AllAnswers";
 import TagCard from "@/components/cards/TagCard";
 import Preview from "@/components/editor/Preview";
-import React, { Suspense } from "react";
-import { unstable_after as after } from "next/server";
 import AnswerForm from "@/components/forms/AnswerForm";
-import { getAnswers } from "@/lib/actions/answer.action";
-import AllAnswers from "@/components/answers/AllAnswers";
+import Metric from "@/components/Metric";
+import UserAvatar from "@/components/UserAvatar";
 import Votes from "@/components/votes/Votes";
+import ROUTES from "@/constants/routes";
+import { getAnswers } from "@/lib/actions/answer.action";
+import { getQuestion, incrementViews } from "@/lib/actions/question.action";
 import { hasVoted } from "@/lib/actions/vote.action";
+import { formatNumber, getTimeStamp } from "@/lib/utils";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
   const { id } = await params;

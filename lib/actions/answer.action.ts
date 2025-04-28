@@ -1,13 +1,14 @@
 "use server";
 
 import mongoose from "mongoose";
+import { revalidatePath } from "next/cache";
+
+import ROUTES from "@/constants/routes";
+import { Question } from "@/database";
 import Answer, { IAnswerDoc } from "@/database/answer.model";
 import action from "@/lib/handlers/action";
 import handleError from "@/lib/handlers/error";
 import { AnswerServerSchema, GetAnswersSchema } from "@/lib/validations";
-import { Question } from "@/database";
-import { revalidatePath } from "next/cache";
-import ROUTES from "@/constants/routes";
 
 export async function createAnswer(
   params: CreateAnswerParams

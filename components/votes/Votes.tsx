@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { use, useState } from "react";
+
 import { toast } from "@/hooks/use-toast";
 import { createVote } from "@/lib/actions/vote.action";
 import { formatNumber } from "@/lib/utils";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { use, useState } from "react";
 
 interface Params {
   targetType: "question" | "answer";
@@ -64,7 +65,7 @@ const Votes = ({
         title: successMessage,
         description: "Your vote has been recorded.",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Failed to vote",
         description: "An error occured while voting. Please try again later.",

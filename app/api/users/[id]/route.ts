@@ -1,9 +1,10 @@
+import { NextResponse } from "next/server";
+
 import User from "@/database/user.model";
 import handleError from "@/lib/handlers/error";
 import { NotFoundError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { UserSchema } from "@/lib/validations";
-import { NextResponse } from "next/server";
 
 // GET /api/users/[id]
 export async function GET(

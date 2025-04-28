@@ -6,11 +6,10 @@ import mongoose from "mongoose";
 import { signIn } from "@/auth";
 import Account from "@/database/account.model";
 import User from "@/database/user.model";
-
 import action from "@/lib/handlers/action";
 import handleError from "@/lib/handlers/error";
-import { SignInSchema, SignUpSchema } from "@/lib/validations";
 import { NotFoundError } from "@/lib/http-errors";
+import { SignInSchema, SignUpSchema } from "@/lib/validations";
 
 export async function signUpWithCredentials(
   params: AuthCredentials

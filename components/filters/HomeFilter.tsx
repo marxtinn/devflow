@@ -1,10 +1,11 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/url";
 import { cn } from "@/lib/utils";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
 
 const filters = [
   { name: "React", value: "react" },

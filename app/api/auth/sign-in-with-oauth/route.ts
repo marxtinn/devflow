@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
+import { NextResponse } from "next/server";
 import slugify from "slugify";
 
-import dbConnect from "@/lib/mongoose";
-import handleError from "@/lib/handlers/error";
-import { SignInWithOAuthSchema } from "@/lib/validations";
-import { ValidationError } from "@/lib/http-errors";
-import User from "@/database/user.model";
 import Account from "@/database/account.model";
-import { NextResponse } from "next/server";
+import User from "@/database/user.model";
+import handleError from "@/lib/handlers/error";
+import { ValidationError } from "@/lib/http-errors";
+import dbConnect from "@/lib/mongoose";
+import { SignInWithOAuthSchema } from "@/lib/validations";
 
 export async function POST(request: Request) {
   const { provider, providerAccountId, user } = await request.json();

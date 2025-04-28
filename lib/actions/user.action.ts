@@ -1,10 +1,11 @@
 "use server";
 
+import { FilterQuery } from "mongoose";
+
+import { User } from "@/database";
 import action from "@/lib/handlers/action";
 import handleError from "@/lib/handlers/error";
 import { PaginatedSearchParamsSchema } from "@/lib/validations";
-import { User } from "@/database";
-import { FilterQuery } from "mongoose";
 
 export async function getUsers(
   params: PaginatedSearchParams

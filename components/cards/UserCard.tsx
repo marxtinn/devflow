@@ -1,11 +1,12 @@
+import Link from "next/link";
+
 import UserAvatar from "@/components/UserAvatar";
 import ROUTES from "@/constants/routes";
-import Link from "next/link";
 
 const UserCard = ({ _id, name, image, username }: User) => {
   return (
     <div className="shadow-light100_darknone w-full xs:w-[230px]">
-      <article className="background-light900_dark200 light-border flex w-full flex-col items-center jc rounded-2xl border p-8">
+      <article className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border p-8">
         <UserAvatar
           id={_id}
           name={name}

@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import Theme from "./Theme";
-import MobileNavigation from "./MobileNavigation";
 import { auth } from "@/auth";
 import UserAvatar from "@/components/UserAvatar";
+
+import MobileNavigation from "./MobileNavigation";
+import Theme from "./Theme";
 
 const Navbar = async () => {
   const session = await auth();

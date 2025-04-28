@@ -1,5 +1,11 @@
+import { LogOut } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
+import { auth, signOut } from "@/auth";
+import NavLinks from "@/components/navigation/navbar/NavLinks";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -7,13 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Image from "next/image";
-import Link from "next/link";
 import ROUTES from "@/constants/routes";
-import { Button } from "@/components/ui/button";
-import NavLinks from "@/components/navigation/navbar/NavLinks";
-import { auth, signOut } from "@/auth";
-import { LogOut } from "lucide-react";
 
 const MobileNavigation = async () => {
   const session = await auth();

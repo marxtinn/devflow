@@ -1,11 +1,12 @@
+import Link from "next/link";
+import { Suspense } from "react";
+
 import Preview from "@/components/editor/Preview";
 import UserAvatar from "@/components/UserAvatar";
 import Votes from "@/components/votes/Votes";
 import ROUTES from "@/constants/routes";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { getTimeStamp } from "@/lib/utils";
-import Link from "next/link";
-import { Suspense } from "react";
 
 const AnswerCard = ({
   _id,
@@ -34,7 +35,7 @@ const AnswerCard = ({
 
           <Link
             href={ROUTES.PROFILE(author._id)}
-            className="flex flex-col sm:flex-row sm:items-center max-sm:ml-1"
+            className="flex flex-col max-sm:ml-1 sm:flex-row sm:items-center"
           >
             <p className="body-semibold text-dark300_light700">
               {author.name || "Anonymous"}

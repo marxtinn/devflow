@@ -2,10 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+import { Badge } from "@/components/ui/badge";
 import ROUTES from "@/constants/routes";
 import { cn, getDeviconClassName, getTechDescription } from "@/lib/utils";
-
-import { Badge } from "@/components/ui/badge";
 
 interface Props {
   _id: string;
@@ -37,7 +36,7 @@ const TagCard = ({
 
   const Content = (
     <>
-      <Badge className="subtle-medium background-light800_dark300 text-light400_light500 rounded-md border-none px-4 py-2 uppercase flex flex-row gap-2">
+      <Badge className="subtle-medium background-light800_dark300 text-light400_light500 flex flex-row gap-2 rounded-md border-none px-4 py-2 uppercase">
         <div className="flex-center space-x-2">
           <i className={`${iconClass} text-sm`}></i>
           <span>{name}</span>

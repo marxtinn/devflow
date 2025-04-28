@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { DEFAULT_EMPTY, DEFAULT_ERROR } from "@/constants/states";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+import { Button } from "@/components/ui/button";
+import { DEFAULT_EMPTY, DEFAULT_ERROR } from "@/constants/states";
 
 interface Props<T> {
   success: boolean;
@@ -66,7 +67,7 @@ const StateSkeleton = ({
     </p>
     {button && (
       <Link href={button.href}>
-        <Button className="paragraph-medium mt-5 min-h-[46px] rounded-lg px-4 py-3 text-light-900 hover: bg-primary-500">
+        <Button className="paragraph-medium hover: mt-5 min-h-[46px] rounded-lg bg-primary-500 px-4 py-3 text-light-900">
           {button.text}
         </Button>
       </Link>
