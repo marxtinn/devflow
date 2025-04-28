@@ -24,13 +24,12 @@ const Metric = ({
   href,
   textStyles,
   imgStyles,
-  isAuthor,
   titleStyles,
 }: Props) => {
   const metricContent = (
     <>
       <Image
-        src={imgUrl}
+        src={imgUrl || "/icons/avatar.svg"}
         width={16}
         height={16}
         alt={alt}
