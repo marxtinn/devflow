@@ -102,7 +102,20 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
         });
       }
 
-      const formattedAnswer = data.replace(/<br>/g, " ").toString().trim();
+      // Preprocessing function defined inside generateAIAnswer
+      const preprocessMarkdown = (markdown: string): string => {
+        return (
+          markdown
+            .replace(/<br>/g, " ")
+            // Fix code blocks with missing language identifiers
+            .replace(/```(\s*)\n/g, "```text\n")
+            // Fix code blocks that have no language and no newline
+            .replace(/```(?!\w)/g, "```text")
+            .trim()
+        );
+      };
+
+      const formattedAnswer = preprocessMarkdown(data);
 
       if (editorRef.current) {
         editorRef.current.setMarkdown(formattedAnswer);
