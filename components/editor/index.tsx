@@ -61,11 +61,12 @@ const Editor = ({ value, editorRef, fieldChange }: Props) => {
         quotePlugin(),
         tablePlugin(),
         imagePlugin(),
-        codeBlockPlugin({ defaultCodeBlockLanguage: "" }),
+        codeBlockPlugin({ defaultCodeBlockLanguage: "text" }),
         codeMirrorPlugin({
           codeBlockLanguages: {
             css: "css",
             txt: "txt",
+            text: "text",
             sql: "sql",
             html: "html",
             sass: "sass",
