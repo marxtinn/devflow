@@ -25,7 +25,7 @@ const Navbar = async () => {
         </p>
       </Link>
 
-      <p>Global Search</p>
+      <p>Global Search (coming soon)</p>
 
       <div className="flex-between gap-5">
         <Theme />
