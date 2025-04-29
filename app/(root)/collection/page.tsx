@@ -5,7 +5,7 @@ import Pagination from "@/components/Pagination";
 import LocalSearch from "@/components/search/LocalSearch";
 import { CollectionFilters } from "@/constants/filters";
 import ROUTES from "@/constants/routes";
-import { EMPTY_QUESTION } from "@/constants/states";
+import { EMPTY_COLLECTIONS } from "@/constants/states";
 import { getSavedQuestions } from "@/lib/actions/collection.action";
 
 interface SearchParams {
@@ -46,7 +46,7 @@ const Collections = async ({ searchParams }: SearchParams) => {
         success={success}
         error={error}
         data={collection}
-        empty={EMPTY_QUESTION}
+        empty={EMPTY_COLLECTIONS}
         render={(collection) => (
           <div className="mt-10 flex w-full flex-col gap-6">
             {collection.map((item) => (
