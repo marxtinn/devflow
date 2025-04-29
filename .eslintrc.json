@@ -35,6 +35,7 @@
       }
     ]
   },
+  "ignorePatterns": ["components/ui/**"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
